@@ -81,7 +81,7 @@ export default function Home(){
             //Models
             const loader = new GLTFLoader();
 
-            loader.load( '/desktop/scene.gltf', function ( gltf ) {
+            loader.load( '/models/shopping_bag.gltf', function ( gltf ) {
                 mesh = gltf.scene
 
                 scene.add( mesh );
@@ -149,6 +149,7 @@ export default function Home(){
         <div className={`w-full min-h-screen`}>
             <div id="container" className='fixed'></div>
             <main className='absolute w-1/3 flex flex-col top-0 left-0 z-20 space-y-10 text-white'>
+                <div className='bg-tertiary rounded-xl m-8 p-8 flex flex-col spaxe-y-4 justify-center items-center'>
                 <p> asdf gsfgs agaggd a dgasd adfa  asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa</p>
                 <p> asdf gsfgs agaggd a dgasd adfa  asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa</p>
                 <p> asdf gsfgs agaggd a dgasd adfa  asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa</p>
@@ -169,6 +170,8 @@ export default function Home(){
                 <p> asdf gsfgs agaggd a dgasd adfa  asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa</p>
                 <p> asdf gsfgs agaggd a dgasd adfa  asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa</p>
                 <p> asdf gsfgs agaggd a dgasd adfa  asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa asdf gsfgs agaggd a dgasd adfa</p>
+                </div>
+                
             </main>
         </div>
         
