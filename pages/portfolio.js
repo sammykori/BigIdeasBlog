@@ -10,14 +10,14 @@ export default function Port () {
                 <Navbar />
                 <Hero />
             </div>
-            <About />
-            <Experience />
-            <Tech />
-            <Works />
+                <About />
+                <Experience />
+                <Tech />
+                <Works />
             
             <div className='relative z-0 pb-24'>
-            <Contact />
-            <StarsCanvas />
+                <Contact />
+                <StarsCanvas />
             </div>
         </div>
         
