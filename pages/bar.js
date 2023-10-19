@@ -10,39 +10,57 @@ import CanvasLoader from '@/utils/Loader'
 import { color } from 'framer-motion';
 
 
-const Bar = ({taps, underlight, ...props}) => {
-  const avat = useGLTF('/models/bar-small.glb')
-  console.log(avat);
-  console.log(underlight.on, underlight.color);
-  console.log(taps.on, taps.number);
-  console.log({...props});
+const Bar = ({taps, underlight, area, setError, rings, led, ...props}) => {
+
+  const bar1 = useGLTF('/models/bar-small.glb')
+  const bar2 = useGLTF('/models/bar-big.glb')
+
+  const [bar, setBar] = useState('bar1')
+
+  console.log(bar2);
+  console.log(rings);
+//   console.log(taps.on, taps.number);
+//   console.log({...props});
+
+  useEffect(()=>{
+    console.log("area changed");
+    if(area.width < 500 && area.breadth < 500){
+        setBar('')
+    }else if(area.width > 699 && area.breadth > 699){
+        setBar('bar2')
+    }else if(area.width > 499 && area.breadth > 499){
+        setBar('bar1')
+    }
+  }, [area])
+
+  
 
   useFrame((state, delta) => {
-    for(const obj in avat.nodes){
+    for(const obj in bar1.nodes){
         if(!taps.on){
-            avat.nodes.TuborgFont.visible = false;
-            avat.nodes.TuborgFont001.visible = false;
-            avat.nodes.TuborgFont002.visible = false;
+            bar1.nodes.TuborgFont.visible = false;
+            bar1.nodes.TuborgFont001.visible = false;
+            bar1.nodes.TuborgFont002.visible = false;
         }else{
-            avat.nodes.TuborgFont.visible = true;
-            avat.nodes.TuborgFont001.visible = true;
-            avat.nodes.TuborgFont002.visible = true;
+            bar1.nodes.TuborgFont.visible = true;
+            bar1.nodes.TuborgFont001.visible = true;
+            bar1.nodes.TuborgFont002.visible = true;
 
             switch (taps.number) {
                 case '1':
-                    avat.nodes.TuborgFont.visible = false;
-                    avat.nodes.TuborgFont001.visible = true;
-                    avat.nodes.TuborgFont002.visible = false;
+                    bar1.nodes.TuborgFont.visible = false;
+                    bar1.nodes.TuborgFont001.visible = true;
+                    bar1.nodes.TuborgFont002.visible = false;
                     break;
                 case '2':
-                    avat.nodes.TuborgFont.visible = true;
-                    avat.nodes.TuborgFont001.visible = false;
-                    avat.nodes.TuborgFont002.visible = true;
+                    bar1.nodes.TuborgFont.visible = true;
+                    bar1.nodes.TuborgFont001.visible = false;
+                    bar1.nodes.TuborgFont002.visible = true;
                     break;
                 case '3':
-                    avat.nodes.TuborgFont.visible = true;
-                    avat.nodes.TuborgFont001.visible = true;
-                    avat.nodes.TuborgFont002.visible = true;
+                    bar1.nodes.TuborgFont.visible = true;
+                    bar1.nodes.TuborgFont001.visible = true;
+                    bar1.nodes.TuborgFont002.visible = true;
                     break;
             
                 default:
@@ -51,23 +69,62 @@ const Bar = ({taps, underlight, ...props}) => {
         }
         
         if(!underlight.on){
-            avat.nodes.Curve015_2.material.emissive = new THREE.Color('black')
+            bar1.nodes.Curve015_2.material.emissive = new THREE.Color('black')
         }else{
-            avat.nodes.Curve015_2.material.emissive = new THREE.Color(underlight.color)
+            bar1.nodes.Curve015_2.material.emissive = new THREE.Color(underlight.color)
+        }
+    }
+    for(const obj in bar2.nodes){
+        if(!rings){
+            bar2.nodes.Rings035.visible = false;
+        }else{
+            bar2.nodes.Rings035.visible  = true;
+
+        }
+        
+        if(!underlight.on){
+            bar2.nodes.Underlights.material.emissive = new THREE.Color('black')
+        }else{
+            bar2.nodes.Underlights.material.emissive = new THREE.Color(underlight.color)
+        }
+
+        if(!underlight.on){
+            bar2.nodes.Underlights.material.emissive = new THREE.Color('black')
+        }else{
+            bar2.nodes.Underlights.material.emissive = new THREE.Color(underlight.color)
+        }
+
+        if(!led){
+            bar2.nodes.Cylinder013_2.material.emissive = new THREE.Color('black')
+        }else{
+            bar2.nodes.Cylinder013_2.material.emissive = new THREE.Color('white')
         }
     }
     
    
     })
+
+
     
   return (
-    <group {...props} dispose={null}>
-      <primitive object={avat.scene} position-y={0} rotation-y={0} scale={1.3}/>
-    </group>
+    <>
+        {bar==='bar1'?
+            <group {...props} dispose={null}>
+                <primitive object={bar1.scene} position-y={0} rotation-y={0} scale={1.3}/>
+            </group>
+            : bar === 'bar2'?
+            <group {...props} dispose={null}>
+                <primitive object={bar2.scene} position-y={0} rotation-y={0} scale={1.3}/>
+            </group>: ''
+        }
+    </>
+    
+    
   )
 }
 
 useGLTF.preload('/models/bar-small.glb')
+useGLTF.preload('/models/bar-big.glb')
 
 
 
@@ -81,6 +138,9 @@ const BarCanvas = () => {
         const [isMobile, setIsMobile] = useState(false);
         const [taps, setTaps] = useState({on: true, number: 3});
         const [underlight, setUnderLight] = useState({on: true, color: 'white'});
+        const [area, setArea] = useState({width: 500, breadth: 500})
+        const [rings, setRings] = useState(true);
+        const [led, setLed] = useState(true);
     
       useEffect(()=>{
         const mediaQuery = window.matchMedia('(max-width: 500px)')
@@ -102,6 +162,17 @@ const BarCanvas = () => {
                 <div className="w-full flex flex-col justify-center items-center">
                     <h1>Festival Bar Builder</h1>
                     <form className='flex flex-col justify-center items-start space-y-4'>
+                    <div>
+                            <div>
+                            <label>Width</label>
+                                <input type="number" value={area.width} onChange={(e)=>setArea({width:e.target.value, breadth:area.breadth})} required/>
+                            </div>
+                            
+                            <div>
+                                <label>breadth</label>
+                                <input type="number" value={area.breadth} onChange={(e)=>setArea({width: area.width, breadth: e.target.value})} required/>
+                            </div>
+                        </div>
                         <div>
                             <div>
                                 <label >Taps</label>
@@ -129,6 +200,20 @@ const BarCanvas = () => {
                                 <label htmlFor='blue'>Blue</label>
                             </div>
                         </div>
+                        <div>
+                            <div>
+                                <label >Rings</label>
+                                <input type="checkbox"  checked={rings} onChange={(e)=>setRings(!rings)} />
+                            </div>
+
+                        </div>
+                        <div>
+                            <div>
+                                <label >LED Screen</label>
+                                <input type="checkbox"  checked={led} onChange={(e)=>setLed(!led)} />
+                            </div>
+
+                        </div>
                         
                     </form>
                     
@@ -146,8 +231,8 @@ const BarCanvas = () => {
                         <ambientLight intensity={0.1} />
                         <directionalLight intensity={0.4} />
                         <Suspense fallback={CanvasLoader}>
-                            <OrbitControls autoRotate enableZoom={false} maxPolarAngle={Math.PI} minPolarAngle={Math.PI/2} />
-                            <Bar position={[0.025, -0.9, 0]} taps={taps} underlight={underlight} />
+                            <OrbitControls autoRotate enableZoom={false} maxPolarAngle={2} minPolarAngle={1} />
+                            <Bar position={[0.025, -0.9, 0]} taps={taps} underlight={underlight} area={area} rings={rings} led={led} />
                         </Suspense>
                     </Canvas>
                 </div>
