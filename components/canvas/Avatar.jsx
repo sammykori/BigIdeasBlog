@@ -41,7 +41,7 @@ const AvatarCanvas = () => {
          <ambientLight intensity={2.25} />
          <directionalLight intensity={0.4} />
          <Suspense fallback={<CanvasLoader/>}>
-            <OrbitControls autoRotate enableZoom={false} maxPolarAngle={Math.PI/2} minPolarAngle={Math.PI/2} />
+            <OrbitControls enableZoom={false} maxPolarAngle={Math.PI/2} minPolarAngle={Math.PI/2} />
             <Avatar position={[0.025, -0.9, 0]} isMobile={isMobile} />
          </Suspense>
       </Canvas>

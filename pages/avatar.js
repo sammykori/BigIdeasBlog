@@ -7,7 +7,7 @@ import CanvasLoader from '@/utils/Loader'
 
 const Avatar = ({...props}) => {
   const avat = useGLTF('/avatar/avatar-transformed.glb')
-  // console.log(nodes);
+  console.log(avat);
   // console.log(materials);
   // console.log({...props});
   return (
