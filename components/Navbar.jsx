@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { navLinks } from '@/constants'
-import { logo, menu, close } from '@/public/assets'
+import { logo, menu, close, skb, skw } from '@/public/assets'
 import { styles } from '@/utils/styles'
 
 const Navbar = () => {
@@ -18,8 +18,8 @@ const Navbar = () => {
           setActive("");
           window.scrollTo(0, 0);
         }}>
-          <Image src={logo} className='w-8 h-8 object-contain' alt='logo' />
-          <p className='font-bold cursor-pointer'>Sammy<span>Kori</span></p>
+          <Image src={skb} width={100} height={50} className='w-32 h-auto  object-contain' alt='logo' />
+          {/* <p className='font-bold cursor-pointer'>Sammy<span>Kori</span></p> */}
         </Link>
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinks.map((link)=>(

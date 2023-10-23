@@ -34,6 +34,11 @@ import ca from "./ca.png";
 import iipgh from "./iipgh.jpeg";
 import qodehub from "./qodehub.png";
 
+import skw from "./sklogo.png";
+import skb from "./sklogo-dark.png";
+
+
+
 export {
   logo,
   backend,
@@ -66,5 +71,7 @@ export {
   quantum,
   ca,
   iipgh,
-  qodehub
+  qodehub,
+  skb,
+  skw
 };
