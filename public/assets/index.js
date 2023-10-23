@@ -29,6 +29,10 @@ import tesla from "./company/tesla.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import quantum from "./Quantum_logo.jpg";
+import ca from "./ca.png";
+import iipgh from "./iipgh.jpeg";
+import qodehub from "./qodehub.png";
 
 export {
   logo,
@@ -59,4 +63,8 @@ export {
   carrent,
   jobit,
   tripguide,
+  quantum,
+  ca,
+  iipgh,
+  qodehub
 };

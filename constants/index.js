@@ -23,6 +23,10 @@ import {
     jobit,
     tripguide,
     threejs,
+    quantum,
+    ca,
+    iipgh,
+    qodehub
   } from "@/public/assets";
  
 
@@ -118,10 +122,10 @@ import {
   
   const experiences = [
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
-      iconBg: "#383E56",
+      title: "Full Stack Developer",
+      company_name: "Quantum",
+      icon: quantum,
+      iconBg: "#FFFFFF",
       date: "March 2020 - April 2021",
       points: [
         "Developing and maintaining web applications using React.js and other related technologies.",
@@ -131,10 +135,10 @@ import {
       ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
+      title: "Front-end Developer",
+      company_name: "Casting Africa",
+      icon: ca,
+      iconBg: "#FFFFFF",
       date: "Jan 2021 - Feb 2022",
       points: [
         "Developing and maintaining web applications using React.js and other related technologies.",
@@ -145,9 +149,9 @@ import {
     },
     {
       title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
-      iconBg: "#383E56",
+      company_name: "IIPGH",
+      icon: iipgh,
+      iconBg: "#FFFFFF",
       date: "Jan 2022 - Jan 2023",
       points: [
         "Developing and maintaining web applications using React.js and other related technologies.",
@@ -157,10 +161,10 @@ import {
       ],
     },
     {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
+      title: "React Developer",
+      company_name: "Qodehub",
+      icon: qodehub,
+      iconBg: "#001A56",
       date: "Jan 2023 - Present",
       points: [
         "Developing and maintaining web applications using React.js and other related technologies.",
