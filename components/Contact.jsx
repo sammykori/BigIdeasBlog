@@ -3,6 +3,11 @@ import { styles } from '@/utils/styles'
 import { EarthCanvas } from './canvas'
 import { slideIn, staggerContainer } from '@/utils/motion'
 import {motion} from 'framer-motion'
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+import '@sweetalert2/theme-dark/dark.css'
+
 
 const Contact = () => {
   const [name, setName] = useState()
@@ -29,6 +34,17 @@ const Contact = () => {
     })
     const result = await response.json()
     console.log(result);
+    if(result.messageId){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your email has been sent!',
+        showConfirmButton: false,
+        timer: 3000
+      }).then((result)=>{
+        window.document.location.reload();
+      })
+    }
   }
 
   return (
