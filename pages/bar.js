@@ -156,6 +156,15 @@ const BarCanvas = () => {
           mediaQuery.removeEventListener('change', handleMediaQueryChange)
         }
       },[])
+
+      function generatePDF(){
+        const canvas =  document.getElementsByTagName("canvas")[0]
+        const image = canvas.toDataURL("image/png");
+        const a = document.createElement("a");
+        a.href = image.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+        a.download="image.png"
+        a.click();
+      }
   return(
     <div className='relative z-0 bg-primary min-h-screen text-white space-y-20'>
             <div className='w-full h-screen bg-hero bg-no-repeat bg-cover bg-center grid grid-cols-1 lg:grid-cols-2'>
@@ -216,11 +225,13 @@ const BarCanvas = () => {
                         </div>
                         
                     </form>
+                    <button className='py-1 px-4 bg-blue-500 text-white' onClick={()=>generatePDF()}>Print</button>
                     
                 </div>
                 <div className=''>
                     <Canvas
                         camera={{ position: [2, 0, 12.25], fov: 40 }}
+                        gl={{ preserveDrawingBuffer: true }}
                         // style={{
                         //     backgroundColor: 'transparent',
                         //     width: '50vw',
