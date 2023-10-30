@@ -13,12 +13,16 @@ const Contact = () => {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [message, setMessage] = useState()
+  const [error, setError] = useState()
   
   const [loading, setLoading] = useState(false)
 
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    if(!email && !message &&!name){
+      return setError("Fill out the form completely");
+    }
     const response = await fetch("/api/sendMail", {
       method: "POST",
       body: JSON.stringify(
@@ -55,12 +59,13 @@ const Contact = () => {
           <h2 className={`${styles.sectionHeadText} text-6xl`}>Contact</h2>
           <form onSubmit={handleSubmit} className='flex flex-col mt-12 gap-8'>
             <label className='flex flex-col'><span className='text-white font-medium mb-4'>Your Name</span></label>
-            <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} placeholder="What's your name" className='rounded-lg outline-none border-none font-medium bg-tertiary py-4 px-6'/>
+            <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} placeholder="What's your name" className='rounded-lg outline-none border-none font-medium bg-tertiary py-4 px-6' required/>
             <label className='flex flex-col'><span className='text-white font-medium mb-4'>Your Email</span></label>
-            <input type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="What's your email" className='rounded-lg outline-none border-none font-medium bg-tertiary py-4 px-6'/>
+            <input type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="What's your email" className='rounded-lg outline-none border-none font-medium bg-tertiary py-4 px-6' required/>
             <label className='flex flex-col'><span className='text-white font-medium mb-4'>Your Message</span></label>
-            <textarea rows={7}  name="message" value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="What do you want to say" className='rounded-lg outline-none border-none font-medium bg-tertiary py-4 px-6'/>
+            <textarea rows={7}  name="message" value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="What do you want to say" className='rounded-lg outline-none border-none font-medium bg-tertiary py-4 px-6' required/>
             <button type="submit" className='bg-tertiary py-3 px-8 outline-none w-fit text-white shadow-md shadow-primary rounded-xl'>Send</button>
+            <p className='text-red-700 font-medium my-4'>{error}</p>
           </form>
         </motion.div>
         <motion.div variants={slideIn("right", "tween", "0.2", 1)}  className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]">
