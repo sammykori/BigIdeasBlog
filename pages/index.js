@@ -1,24 +1,21 @@
 import { useEffect, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Edges, MeshPortalMaterial, CameraControls, Environment, PivotControls } from '@react-three/drei'
-import { About, Contact, Experience, Feedbacks, Hero, Loader, Navbar, StarsCanvas, Tech, Works } from '@/components'
+import { About, Contact, Discover, Experience, Feedbacks, Hero, Loader, Navbar, Recent, Socials, Jobs, StarsCanvas, Subscription, Tech, Works } from '@/components'
 
-export default function Port () {
+export default function Blog () {
     return(
-        <div className='relative z-0 bg-primary min-h-screen text-white space-y-20'>
-            <div className='bg-hero bg-no-repeat bg-cover bg-center '>
+        <div className='relative z-0 bg-primary min-h-screen text-white pt-20'>
+            <div className=' '>
                 <Navbar />
                 <Hero />
             </div>
-                <About />
-                <Experience />
-                <Tech />
-                <Works />
-            
-            <div className='relative z-0 pb-24'>
-                <Contact />
-                <StarsCanvas />
-            </div>
+            <Recent />
+            <Subscription />
+            <Discover />
+            <Socials />
+            <Jobs />
+            {/* <Footer /> */}
         </div>
         
     )

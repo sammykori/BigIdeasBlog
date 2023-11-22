@@ -123,6 +123,16 @@
     animation: mulShdSpin 1.1s infinite ease;
     transform: translateZ(0);
   }
+
+  .searchBar{
+    width: 70px;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+  }
+
+  .searchBar:hover {
+    width: 70%;
+  }
   
   @keyframes mulShdSpin {
     0%,
@@ -200,3 +210,4 @@
         -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
     }
   }
+

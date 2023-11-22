@@ -36,6 +36,8 @@ import qodehub from "./qodehub.png";
 
 import skw from "./sklogo.png";
 import skb from "./sklogo-dark.png";
+import webbed1 from "./webbed1.png";
+import webbed2 from "./webbed2.png";
 
 
 
@@ -73,5 +75,7 @@ export {
   iipgh,
   qodehub,
   skb,
-  skw
+  skw,
+  webbed1,
+  webbed2
 };
